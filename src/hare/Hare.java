@@ -20,19 +20,19 @@ public abstract class Hare {
     }
 
     // called every game tick
-    public void update(Board board) {
+    public void update() {
         if (frozen) return;
 
-        move(board);
-        attackIfNeeded(board);
+        move();
+        attack();
     }
 
-    protected void move(Board board) {
+    protected void move() {
         // default: move left
         col -= 1;
     }
 
-    protected void attackIfNeeded(Board board) {
+    protected void attack() {
         // override if needed
     }
 
@@ -47,7 +47,7 @@ public abstract class Hare {
 
     protected void die() {
         // remove from game
-        Board.removeHare(this);
+        removeHare(this);
     }
 
     public void freeze(int seconds) {

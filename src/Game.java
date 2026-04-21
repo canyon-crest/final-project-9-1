@@ -66,8 +66,15 @@ public class Game {
         // Move hares
         for (int i = 0; i < hares.size(); i++) {
             Hare h = hares.get(i);
-            h.move();
-            System.out.println("Hare in row " + h.getRow() + " moved to col " + h.getCol());
+            
+            if (board[h.getRow()][h.getCol()] != null) {
+            	h.attack();
+            }
+            else {
+            	h.move();
+                System.out.println("Hare in row " + h.getRow() + " moved to col " + h.getCol());
+            }
+            
         }
 
         // Remove dead hares
