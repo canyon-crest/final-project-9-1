@@ -1,3 +1,4 @@
+package powerup;
 public class FoodAttack {
 
     private int damage;
