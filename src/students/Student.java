@@ -2,6 +2,7 @@ package students;
 
 
 import java.util.*;
+import hare.*;
 
 public abstract class Student{
 	protected String name;
@@ -67,5 +68,28 @@ public abstract class Student{
         }
     }
 
-    public abstract void act();
+    protected Hare findClosestHare(ArrayList<Hare> hares) {
+        Hare closest = null;
+        int minDistance = Integer.MAX_VALUE;
+
+        for (Hare h : hares) {
+            // same row AND in front
+            if (h.getRow() == row && h.getCol() >= col) {
+                int distance = h.getCol() - col;
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closest = h;
+                }
+            }
+        }
+
+        return closest;
+    }
+    
+    public void act(ArrayList<Hare> hares) {
+    	attack(findClosestHare(hares));
+    };
+    
+    public abstract void attack(Hare hare); 
 }
