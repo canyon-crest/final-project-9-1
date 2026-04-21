@@ -1,4 +1,4 @@
-package student;
+package students;
 import hare.Hare;
 
 public class Jennifer extends Student{

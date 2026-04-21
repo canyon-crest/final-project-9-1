@@ -1,4 +1,4 @@
-package student;
+package students;
 
 
 public class Afina extends Student{
