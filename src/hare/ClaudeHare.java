@@ -1,3 +1,6 @@
+package hare;
+import GameManager;
+
 public class ClaudeHare extends Hare{
 	public ClaudeHare(int row) {
 		super(120,1.0,row);

@@ -1,3 +1,4 @@
+package hare;
 public abstract class Hare {
 
     protected int health;

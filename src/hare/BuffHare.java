@@ -1,3 +1,4 @@
+package hare;
 public class BuffHare extends Hare{
 	public BuffHare(int row) {
 		super(200,0.8,row);

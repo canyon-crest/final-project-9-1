@@ -1,3 +1,6 @@
+package student;
+
+
 
 public class Yiwen extends Student{
 	

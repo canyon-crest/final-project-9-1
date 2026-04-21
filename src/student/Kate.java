@@ -1,3 +1,5 @@
+package student;
+
 
 public class Kate extends Student{
 	
@@ -6,6 +8,6 @@ public class Kate extends Student{
 	}
 	
 	public void act() {
-		//splatter paint
+		//sleep
 	}
 }

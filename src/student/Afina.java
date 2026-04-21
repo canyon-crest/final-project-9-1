@@ -1,3 +1,5 @@
+package student;
+
 
 public class Afina extends Student{
 	
@@ -6,6 +8,6 @@ public class Afina extends Student{
 	}
 	
 	public void act() {
-		//splatter paint
+		//plant
 	}
 }
