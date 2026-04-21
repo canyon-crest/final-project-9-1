@@ -28,13 +28,20 @@ public class MainPage {
 
         JButton startButton = new JButton("Start Game");
         startButton.setBounds(300, 400, 150, 50);
+        JButton howToPlayButton = new JButton("How to Play");
+        howToPlayButton.setBounds(300, 460, 150, 25);
 
-        // THIS is the switch
+        // switch
         startButton.addActionListener(e -> {
             layout.show(container, "Game");
         });
+        
+        howToPlayButton.addActionListener(e -> {
+        	layout.show(container, "Instructions");
+        });
 
         panel.add(startButton);
+        panel.add(howToPlayButton);
         return panel;
     }
     
