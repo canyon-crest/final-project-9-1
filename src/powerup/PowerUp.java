@@ -1,3 +1,5 @@
+package powerup;
+
 public class PowerUp {
 
     private int outageCost;

@@ -1,3 +1,4 @@
+package powerup;
 public class Outage {
 
     private int duration;

@@ -1,3 +1,4 @@
+package powerup;
 public class Bulletin {
 
     private double multiplier;
