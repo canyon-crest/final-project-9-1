@@ -6,31 +6,33 @@ public abstract class Hare {
     protected double speed; // tiles per second
     protected int row;
     protected int col;
+    protected int damage;
     
     protected boolean frozen = false;
 
-    public Hare(int health, double speed, int row) {
+    public Hare(int health, int damage, double speed, int row) {
         this.health = health;
         this.maxHealth = health;
+        this.damage = damage;
         this.speed = speed;
         this.row = row;
         this.col = 9; // assuming right side spawn like PvZ
     }
 
     // called every game tick
-    public void update(Board board) {
+    public void update() {
         if (frozen) return;
 
-        move(board);
-        attackIfNeeded(board);
+        move();
+        attack();
     }
 
-    protected void move(Board board) {
+    protected void move() {
         // default: move left
         col -= 1;
     }
 
-    protected void attackIfNeeded(Board board) {
+    protected void attack() {
         // override if needed
     }
 
@@ -45,7 +47,7 @@ public abstract class Hare {
 
     protected void die() {
         // remove from game
-        Board.removeHare(this);
+        removeHare(this);
     }
 
     public void freeze(int seconds) {
@@ -60,6 +62,19 @@ public abstract class Hare {
     }
 
     // getters
-    public int getRow() { return row; }
-    public int getCol() { return col; }
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
 }
