@@ -27,27 +27,18 @@ public abstract class Hare {
         attack();
     }
 
-    protected void move() {
+    public void move() {
         // default: move left
         col -= 1;
     }
 
-    protected void attack() {
+    public void attack() {
         // override if needed
     }
 
     public void takeDamage(int dmg) {
         health -= dmg;
         if (health <= 0) die();
-    }
-
-    public boolean isDead() {
-        return health <= 0;
-    }
-
-    protected void die() {
-        // remove from game
-        removeHare(this);
     }
 
     public void freeze(int seconds) {

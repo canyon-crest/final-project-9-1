@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private Student[][] board;
+    private Student[][] students;
     private ArrayList<Hare> hares;
     private int spinach;
     private int rows;
@@ -14,7 +14,7 @@ public class Game {
     public Game(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
-        board = new Student[rows][cols];
+        students = new Student[rows][cols];
         hares = new ArrayList<Hare>();
         spinach = 100;
         tick = 0;
@@ -39,7 +39,22 @@ public class Game {
     }
 
     public void spawnHare(int row) {
-        hares.add(new Hare(row, cols - 1, 100));
+    	Hare h;
+    	int random = (int)(Math.random()*100);
+    	if (random < 7) {
+    		h = new PinkHare(row);
+    	}
+    	else if (random < 17) {
+    		h = new ClaudeHare(row);
+    	}
+    	else if (random < 27) {
+    		h = new BuffHare(row);
+    	}
+    	else {
+    		h = new RegularHare(row);
+    	}
+    	
+        hares.add(h);
     }
 
     public void gameTick() {
@@ -56,7 +71,7 @@ public class Game {
         // Students act
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                Student s = board[r][c];
+                Student s = students[r][c];
                 if (s != null) {
                     s.act(hares);
                 }
@@ -67,7 +82,7 @@ public class Game {
         for (int i = 0; i < hares.size(); i++) {
             Hare h = hares.get(i);
             
-            if (board[h.getRow()][h.getCol()] != null) {
+            if (students[h.getRow()][h.getCol()] != null) {
             	h.attack();
             }
             else {
@@ -77,12 +92,20 @@ public class Game {
             
         }
 
-        // Remove dead hares
+        // Remove dead hares & dead students
         for (int i = hares.size() - 1; i >= 0; i--) {
-            if (!hares.get(i).isAlive()) {
+            if (hares.get(i).getHealth() == 0) {
                 hares.remove(i);
                 System.out.println("A Hare was defeated.");
             }
+        }
+        
+        for (int i = 0; i < students.length; i++) {
+        	for (int j = 0; j<students[0].length; j++)
+	            if (students[i][j].getHealth() == 0) {
+	                System.out.println("A " + students[i][j].getName() + " was defeated.");
+	                students[i][j] = null;
+	            }
         }
 
         // Print spinach
