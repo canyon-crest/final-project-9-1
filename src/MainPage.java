@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class MainPage {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("PvZ Game");
+        JFrame frame = new JFrame("Students Vs Hare");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -45,8 +45,10 @@ public class MainPage {
         return panel;
     }
     
+    
+    
     private static JPanel createGamePanel() {
-        BackgroundPanel panel1 = new BackgroundPanel("/images/grid.png"); // placeholder
+        GamePanel panel1 = new GamePanel("/images/grid.png"); // placeholder
         panel1.setLayout(null);
         JLabel label = new JLabel("Game Started!");
         panel1.add(label);
