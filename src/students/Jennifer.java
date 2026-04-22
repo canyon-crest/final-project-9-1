@@ -16,7 +16,7 @@ public class Jennifer extends Student{
 	}
 	
 	public void sing(Hare hare) {
-		hare.setHealth(hare.getHealth() - damage);
+		hare.takeDamage(damage);
 		System.out.println("Jennifer did " + damage + " damage on " + hare.getName());
 	}
 }

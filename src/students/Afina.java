@@ -23,7 +23,6 @@ public class Afina extends Student {
     @Override
     public void attack(Hare hare) {
         // Afina is a lover, not a fighter!
-    	produceSpinach();
     }
 
 }

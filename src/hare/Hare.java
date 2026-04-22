@@ -38,7 +38,9 @@ public abstract class Hare {
 
     public void takeDamage(int dmg) {
         health -= dmg;
-        if (health <= 0) die();
+        if (health <= 0) {
+        	health = 0;
+        }
     }
 
     public void freeze(int seconds) {

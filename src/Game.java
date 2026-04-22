@@ -25,7 +25,7 @@ public class Game {
             return false;
         }
 
-        if (board[row][col] != null) {
+        if (students[row][col] != null) {
             return false;
         }
 
@@ -33,7 +33,7 @@ public class Game {
             return false;
         }
 
-        board[row][col] = s;
+        students[row][col] = s;
         spinach -= s.getCost();
         return true;
     }
@@ -126,10 +126,6 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game(5, 9);
-
-        game.placeStudent(new Jennifer(), 0, 1);
-        game.placeStudent(new Afina(), 2, 2);
-
         game.start();
     }
 }
