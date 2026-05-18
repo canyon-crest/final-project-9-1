@@ -68,26 +68,20 @@ public abstract class Student{
         }
     }
 
-    protected Hare findClosestHare(ArrayList<Hare> hares) {
-        Hare closest = null;
-        int minDistance = Integer.MAX_VALUE;
-
-        for (Hare h : hares) {
+    protected Hare findClosestHare(Hare[][] hares) {
+        for (Hare h : hares[row]) {
             // same row AND in front
-            if (h.getRow() == row && h.getCol() >= col) {
-                int distance = h.getCol() - col;
-
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closest = h;
-                }
+            for (int j = col; j<9; j++) {
+            	if (hares[row][j] != null) {
+            		return hares[row][j];
+            	}
             }
+        	
         }
-
-        return closest;
+        return null;
     }
     
-    public void act(ArrayList<Hare> hares) {
+    public void act(Hare[][] hares) {
     	attack(findClosestHare(hares));
     };
     

@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class Game {
 
     private Student[][] students;
-    private ArrayList<Hare> hares;
+    private Hare[][] hares;
     private int spinach;
     private int rows;
     private int cols;
@@ -17,7 +17,7 @@ public class Game {
         this.rows = rows;
         this.cols = cols;
         students = new Student[rows][cols];
-        hares = new ArrayList<Hare>();
+        hares = new Hare[rows][cols];
         spinach = 100;
         tick = 0;
     }
@@ -56,7 +56,7 @@ public class Game {
     		h = new RegularHare(row);
     	}
     	
-        hares.add(h);
+        hares[row][9] = h;
     }
 
     public void gameTick() {
@@ -80,28 +80,34 @@ public class Game {
             }
         }
 
-        // Move hares
-        for (int i = 0; i < hares.size(); i++) {
-            Hare h = hares.get(i);
-            
-            if (students[h.getRow()][h.getCol()] != null) {
-            	h.attack();
-            }
-            else {
-            	h.move();
-                System.out.println("Hare in row " + h.getRow() + " moved to col " + h.getCol());
-            }
-            
-        }
-
-        // Remove dead hares & dead students
-        for (int i = hares.size() - 1; i >= 0; i--) {
-            if (hares.get(i).getHealth() == 0) {
-                hares.remove(i);
-                System.out.println("A Hare was defeated.");
-            }
+        // Change hares
+        for (int i = 0; i < hares.length; i++) {
+        	for (int j = 0; j < hares[0].length; j++) {
+        		
+        		if (hares[i][j] != null) {
+        			Hare h = hares[i][j];
+                    
+        	        // Move hares
+                    if (students[i][j] != null) {
+                    	h.attack();
+                    }
+                    else {
+                    	h.move();
+                    	hares[i][j] = null;
+                    	hares[i][j-1] = h;
+                        System.out.println("Hare in row " + i + " moved to col " + j);
+                    }
+                    
+                    // Remove dead hares & dead students
+                    if (hares[i][j].getHealth() == 0) {
+                        hares[i][j] = null;
+                        System.out.println("A Hare was defeated.");
+                    }
+        		}
+        	}  
         }
         
+        // Change students
         for (int i = 0; i < students.length; i++) {
         	for (int j = 0; j<students[0].length; j++)
 	            if (students[i][j] != null && students[i][j].getHealth() == 0) {
@@ -123,7 +129,6 @@ public class Game {
         		}
         		System.out.print("*");
         	}
-        }
         }
     }
 
