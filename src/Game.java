@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class Game {
 
     private Student[][] students;
-    private ArrayList<Hare> hares;
+    private Hare[][] hares;
     private int spinach;
     private int rows;
     private int cols;
@@ -17,7 +17,7 @@ public class Game {
         this.rows = rows;
         this.cols = cols;
         students = new Student[rows][cols];
-        hares = new ArrayList<Hare>();
+        hares = new Hare[rows][cols];
         spinach = 100;
         tick = 0;
     }
@@ -56,7 +56,7 @@ public class Game {
     		h = new RegularHare(row);
     	}
     	
-        hares.add(h);
+        hares[row][9] = h;
     }
 
     public void gameTick() {
