@@ -119,20 +119,6 @@ public class Game {
         // Print spinach
         System.out.println("Spinach: " + spinach);
         
-<<<<<<< HEAD
-//        for (int i = 0; i<rows; i++) {
-//        	for (int j = 0; j<cols; j++) {
-//        		if (students[i][j] != null) {
-//        			System.out.print("S");
-//        		}
-//        		else if (hares[i][j] != null) {
-//        			System.out.print("H");
-//        		}
-//        		System.out.print("*");
-//        	}
-//        }
-//        }
-=======
         for (int i = 0; i<rows; i++) {
         	for (int j = 0; j<cols; j++) {
         		if (students[i][j] != null) {
@@ -144,7 +130,6 @@ public class Game {
         		System.out.print("*");
         	}
         }
->>>>>>> a26bf44fd7f52e0679077e9967ec1d9a6e1cfec2
     }
 
     public void start() {
