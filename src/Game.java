@@ -80,28 +80,34 @@ public class Game {
             }
         }
 
-        // Move hares
-        for (int i = 0; i < hares.size(); i++) {
-            Hare h = hares.get(i);
-            
-            if (students[h.getRow()][h.getCol()] != null) {
-            	h.attack();
-            }
-            else {
-            	h.move();
-                System.out.println("Hare in row " + h.getRow() + " moved to col " + h.getCol());
-            }
-            
-        }
-
-        // Remove dead hares & dead students
-        for (int i = hares.size() - 1; i >= 0; i--) {
-            if (hares.get(i).getHealth() == 0) {
-                hares.remove(i);
-                System.out.println("A Hare was defeated.");
-            }
+        // Change hares
+        for (int i = 0; i < hares.length; i++) {
+        	for (int j = 0; j < hares[0].length; j++) {
+        		
+        		if (hares[i][j] != null) {
+        			Hare h = hares[i][j];
+                    
+        	        // Move hares
+                    if (students[i][j] != null) {
+                    	h.attack();
+                    }
+                    else {
+                    	h.move();
+                    	hares[i][j] = null;
+                    	hares[i][j-1] = h;
+                        System.out.println("Hare in row " + i + " moved to col " + j);
+                    }
+                    
+                    // Remove dead hares & dead students
+                    if (hares[i][j].getHealth() == 0) {
+                        hares[i][j] = null;
+                        System.out.println("A Hare was defeated.");
+                    }
+        		}
+        	}  
         }
         
+        // Change students
         for (int i = 0; i < students.length; i++) {
         	for (int j = 0; j<students[0].length; j++)
 	            if (students[i][j] != null && students[i][j].getHealth() == 0) {
@@ -113,6 +119,7 @@ public class Game {
         // Print spinach
         System.out.println("Spinach: " + spinach);
         
+<<<<<<< HEAD
 //        for (int i = 0; i<rows; i++) {
 //        	for (int j = 0; j<cols; j++) {
 //        		if (students[i][j] != null) {
@@ -125,6 +132,19 @@ public class Game {
 //        	}
 //        }
 //        }
+=======
+        for (int i = 0; i<rows; i++) {
+        	for (int j = 0; j<cols; j++) {
+        		if (students[i][j] != null) {
+        			System.out.print("S");
+        		}
+        		else if (hares[i][j] != null) {
+        			System.out.print("H");
+        		}
+        		System.out.print("*");
+        	}
+        }
+>>>>>>> a26bf44fd7f52e0679077e9967ec1d9a6e1cfec2
     }
 
     public void start() {

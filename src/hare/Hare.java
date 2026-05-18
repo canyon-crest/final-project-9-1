@@ -62,12 +62,4 @@ public abstract class Hare {
     public int getHealth() {
         return health;
     }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
-    }
 }
