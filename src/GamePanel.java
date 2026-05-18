@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class GamePanel extends BackgroundPanel {
+	private Game game;
 	private Image kate;
 	private Image yiwen;
 	private Image jennifer;
@@ -21,8 +22,9 @@ public class GamePanel extends BackgroundPanel {
 	private Rectangle afinaShop = new Rectangle(220, 450, 60, 60);
 	private Rectangle shop = new Rectangle(40, 450, 240, 60);
 	
-	public GamePanel(String imagePath) {
+	public GamePanel(String imagePath, Game game) {
 		super(imagePath);
+		this.game = game;
 		
 		kate = new ImageIcon(getClass().getResource("/images/sleeping-kid-clip-art.png")).getImage();
 		yiwen = new ImageIcon(getClass().getResource("/images/sleeping-kid-clip-art.png")).getImage();
@@ -79,6 +81,8 @@ public class GamePanel extends BackgroundPanel {
 		});
 	}
 	
+	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
