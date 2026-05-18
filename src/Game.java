@@ -104,7 +104,7 @@ public class Game {
         
         for (int i = 0; i < students.length; i++) {
         	for (int j = 0; j<students[0].length; j++)
-	            if (students[i][j].getHealth() == 0) {
+	            if (students[i][j] != null && students[i][j].getHealth() == 0) {
 	                System.out.println("A " + students[i][j].getName() + " was defeated.");
 	                students[i][j] = null;
 	            }
@@ -112,6 +112,19 @@ public class Game {
 
         // Print spinach
         System.out.println("Spinach: " + spinach);
+        
+        for (int i = 0; i<rows; i++) {
+        	for (int j = 0; j<cols; j++) {
+        		if (students[i][j] != null) {
+        			System.out.print("S");
+        		}
+        		else if (hares[i][j] != null) {
+        			System.out.print("H");
+        		}
+        		System.out.print("*");
+        	}
+        }
+        }
     }
 
     public void start() {
