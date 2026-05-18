@@ -2,6 +2,8 @@ import students.*;
 import hare.*;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 public class Game {
 
     private Student[][] students;
@@ -125,7 +127,31 @@ public class Game {
     }
 
     public static void main(String[] args) {
+
         Game game = new Game(5, 9);
-        game.start();
+
+        JFrame frame = new JFrame("Student vs Hares");
+
+        GamePanel panel = new GamePanel("/images/background.png", game);
+
+        frame.add(panel);
+        frame.setSize(900, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        // Game loop
+        while (true) {
+
+            game.gameTick();
+
+            panel.repaint();
+
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

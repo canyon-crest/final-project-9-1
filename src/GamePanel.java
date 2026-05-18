@@ -29,56 +29,46 @@ public class GamePanel extends BackgroundPanel {
 		jennifer = new ImageIcon(getClass().getResource("/images/sleeping-kid-clip-art.png")).getImage();
 		afina = new ImageIcon(getClass().getResource("/images/sleeping-kid-clip-art.png")).getImage();
 		addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-            	Point click = e.getPoint();
-            	if(kateShop.contains(click)) {
-            		if(holding != 1) {
-            			holding = 1;
-            		}
-            	}
-            	else {
-            		if(!kateShop.contains(click) && !shop.contains(click)) {
-            			placedKate.add(click);
-            			holding = 0;
-            		}
-            	}
-            	if(yiwenShop.contains(click)) {
-            		if(holding != 2) {
-            			holding = 2;
-            		}
-            	}
-            	else {
-            		if(!yiwenShop.contains(click) && !shop.contains(click)) {
-            			placedYiwen.add(click);
-            			holding = 0;
-            		}
-            	}
-            	if(jenniferShop.contains(click)) {
-            		if(holding != 3) {
-            			holding = 3;
-            		}
-            	}
-            	else {
-            		if(!jenniferShop.contains(click) && !shop.contains(click)) {
-            			placedJennifer.add(click);
-            			holding = 0;
-            		}
-            	}
-            	if(afinaShop.contains(click)) {
-            		if(holding != 2) {
-            			holding = 2;
-            		}
-            	}
-            	else {
-            		if(!afinaShop.contains(click) && !shop.contains(click)) {
-            			placedAfina.add(click);
-            			holding = 0;
-            		}
-            	}
-            	repaint();
-            	
-            }
+			@Override
+			public void mousePressed(MouseEvent e) {
+			    Point click = e.getPoint();
+
+			    // Select the image from the shop
+			    if (kateShop.contains(click)) {
+			        holding = 1;
+			    }
+			    else if (yiwenShop.contains(click)) {
+			        holding = 2;
+			    }
+			    else if (jenniferShop.contains(click)) {
+			        holding = 3;
+			    }
+			    else if (afinaShop.contains(click)) {
+			        holding = 4;
+			    }
+
+			    // Place the image outside of the shop
+			    else if (!shop.contains(click)) {
+
+			        if (holding == 1) {
+			            placedKate.add(click);
+			        }
+			        else if (holding == 2) {
+			            placedYiwen.add(click);
+			        }
+			        else if (holding == 3) {
+			            placedJennifer.add(click);
+			        }
+			        else if (holding == 4) {
+			            placedAfina.add(click);
+			        }
+
+			        // Stop holding after placing down the image
+			        holding = 0;
+			    }
+
+			    repaint();
+			}
         });
 		addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
