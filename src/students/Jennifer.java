@@ -5,12 +5,10 @@ import java.util.*;
 public class Jennifer extends Student{
 	
 	private int damage;
-	private int range;
 	
 	public Jennifer(int cost, int health, int cooldown, int damage, int range, int row, int col) {
 	    super("Jennifer", cost, health, cooldown, row, col);
 	    this.damage = damage;
-	    this.range = range;
 	}
 	
 	public void attack(Hare hare) {
@@ -18,7 +16,7 @@ public class Jennifer extends Student{
 	}
 	
 	public void sing(Hare hare) {
-		hare.setHealth(hare.getHealth() - damage);
+		hare.takeDamage(damage);
 		System.out.println("Jennifer did " + damage + " damage on " + hare.getName());
 	}
 }
